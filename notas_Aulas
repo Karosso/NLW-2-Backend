@@ -1,0 +1,43 @@
+Criando o servidor
+    npm init -y (Na pasta criada para o servidor)
+    criar a pasta src e o arquivo server.ts
+
+    Instalar o typescript
+        npm install typescript -D
+    Criar o arquivo de configuração
+        npx tsc --init
+        npm install ts-node-dev -D
+    Adicionar o script:
+        "start": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+        no arquivo package.json
+    Instalar o express
+        npm install express
+    Instalar o pacote
+        npm install @types/express -D
+    Testar metodos com o insomnia
+    Instalar o knex(usar linguagem js para os acessos ao bd) e o sqlite3
+        npm install knex sqlite3
+    Criar pasta database dentro do diretorio src    
+        criar o arquivo connection.ts manualmente
+    Criar o arquivo knexfile.ts na raiz do projeto
+        Criar a pasta migrations dentro da pasta database
+        Criar a primeira tabela dentro da pasta migrations
+        No arquivo package.json criar os seguintes comandos do knex:
+            "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
+            "knex:migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback"
+        Rodar o seguinte comando para criar o banco de dados
+            npm run knex:migrate para criar a tabela 00
+            npm run knex:migrate para criar a tabela 01
+            e assim por diante
+Apos ter todas as tabelas criadas
+    Criar o arquivo routes.ts na pasta src
+    Recortar a rota no server.ts para o arquivo routes.ts
+    incluir a chamada do arquivo routes.ts no arquivo server.ts com o metodo:
+        app.use(routes); * e fazer o import
+            Criar toda rota de criação de tabelas e as relações em tabelas
+    Criar a pasta controllers para organização de rotas
+        Criar os arquivos de controllers das tables do db
+    Instalar o cors, para permitir o acesso a api por outra porta do localhost
+    Instalar o axios (npm install axios)
+        Criar a pasta services dentro de src
+            Criar o arquivo api.ts
